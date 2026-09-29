@@ -35,10 +35,13 @@ export default function CreatePage() {
   const uploadAndCreatePost = async (file: File) => {
     const userId = "11111111-1111-1111-1111-111111111111";
 
-    // 1️⃣ Preparar nombre del archivo
-    const fileExt = file.name.split(".").pop();
-    const fileName = `${file.name}-${Date.now()}.${fileExt}`;
-    const filePath = `images/${fileName}`;
+
+const fileExt = file.name.split(".").pop();
+
+const cleanFileName = file.name.replace(/[^a-zA-Z0-9]/g, "_");
+const fileName = `${cleanFileName}_${Date.now()}.${fileExt}`;
+const filePath = `images/${fileName}`;
+
 
     // 2️⃣ Subir al bucket "images"
     const { data: uploadData, error: uploadError } = await supabase.storage
