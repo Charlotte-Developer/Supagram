@@ -94,9 +94,9 @@ export default function PostCard({ post, currentUserId, onLike, onComment }: Pos
           </button>
         </div>
 
-        {/* Contador de likes */}
+        {/* Contador de likes corregido */}
         <span className="font-semibold text-foreground mt-2 block">
-          {post.likes_count.toLocaleString()} likes
+          {(post.likes || 0).toLocaleString()} likes
         </span>
 
         {/* Caption */}
